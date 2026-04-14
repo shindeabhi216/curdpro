@@ -40,17 +40,19 @@ INSTALLED_APPS = [
     'curdapp.apps.CurdappConfig',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'django.contrib.sessions.middleware.SessionMiddleware',   # ✅ REQUIRED
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # ✅ REQUIRED
+    'django.contrib.messages.middleware.MessageMiddleware',     # ✅ REQUIRED
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 ROOT_URLCONF = 'curdpro.urls'
 
 TEMPLATES = [
@@ -78,10 +80,12 @@ WSGI_APPLICATION = 'curdpro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'curd9db',
-        'USER':'root',
-        'PASSWORD':'root'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': 'postgres',
+        'PASSWORD':'root',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
